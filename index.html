@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaugau Corner - Spa & Hotel Thú Cưng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Biến màu sắc */
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFD166;
+            --dark: #1A535C;
+            --light: #F7FFF7;
+            --text: #333333;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mission-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .mission-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f0f8f7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-header h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .service-header .price {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .service-body {
+            padding: 30px;
+        }
+
+        .service-body ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .service-body li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-body li:before {
+            content: "✓";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .booking-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .booking-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .booking-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .booking-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .calendar-day:hover {
+            background-color: #f0f0f0;
+        }
+
+        .calendar-day.selected {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .time-slot:hover {
+            background-color: #f0f0f0;
+        }
+
+        .time-slot.selected {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .calendar, .time-slots {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-paw" style="font-size: 36px; color: var(--primary); margin-right: 10px;"></i>
+                    <h1>Gaugau Corner</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#mission">Mục tiêu & Sứ mệnh</a></li>
+                    <li><a href="#services">Dịch vụ</a></li>
+                    <li><a href="#booking">Đặt lịch</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+                <a href="#booking" class="btn">Đặt lịch ngay</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Chăm sóc thú cưng toàn diện</h2>
+            <p>Gâu Gâu Corner - Nơi thú cưng của bạn được yêu thương và chăm sóc như thành viên gia đình</p>
+            <a href="#services" class="btn">Khám phá dịch vụ</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mục tiêu & Sứ mệnh</h2>
+                <p>Gâu Gâu Corner ra đời với sứ mệnh mang đến cho thú cưng một môi trường chăm sóc an toàn – tận tâm – chuyên nghiệp</p>
+            </div>
+            <div class="mission-content">
+                <div class="mission-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Mục tiêu ngắn hạn</h3>
+                    <p>Trong giai đoạn từ 6 đến 12 tháng đầu tiên, Gâu Gâu Corner đặt mục tiêu tập trung hoàn thiện toàn bộ quy trình chăm sóc thú cưng tại cửa hàng đầu tiên, đảm bảo vận hành trơn tru, chuyên nghiệp và nhất quán.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Mục tiêu dài hạn</h3>
+                    <p>Trong tầm nhìn 3 đến 5 năm tới, Gâu Gâu Corner định hướng phát triển thành chuỗi cửa hàng dịch vụ chăm sóc thú cưng uy tín và được yêu thích khắp cả nước Việt Nam.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Tầm nhìn</h3>
+                    <p>Trở thành chuỗi dịch vụ chăm sóc và khách sạn thú cưng hàng đầu tại Việt Nam, ứng dụng công nghệ quản lý và hệ thống thông tin hiện đại để mang đến trải nghiệm khác biệt cho cả thú cưng và chủ nuôi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dịch vụ của chúng tôi</h2>
+                <p>Chúng tôi cung cấp các gói dịch vụ chăm sóc toàn diện cho thú cưng của bạn</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>COMBO CẠO TRỌN</h3>
+                        <div class="price">CHỈ TỪ 150K</div>
+                    </div>
+                    <div class="service-body">
+                        <p>GÓI COMBO SẠCH SẼ 8 BƯỚC</p>
+                        <ul>
+                            <li>Đón tiếp, xin thông tin và tư vấn</li>
+                            <li>Kiểm tra sức khỏe lâm sàng</li>
+                            <li>Nhổ lông tai, vệ sinh tai</li>
+                            <li>Cạo bàn, cắt móng, mài móng</li>
+                            <li>Vật tuyển hồi</li>
+                            <li>Tắm sạch sẽ & Massage</li>
+                            <li>Sấy khô, vệ sinh tai lại, chải lông</li>
+                            <li>Xịt nước hoa, dưỡng lông</li>
+                        </ul>
+                        <a href="#booking" class="btn">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>COMBO CẠO TỈA</h3>
+                        <div class="price">CHỈ TỪ 250K</div>
+                    </div>
+                    <div class="service-body">
+                        <p>GÓI COMBO CẠO TỈA 9 BƯỚC</p>
+                        <ul>
+                            <li>Đón tiếp, xin thông tin và tư vấn</li>
+                            <li>Kiểm tra sức khỏe lâm sàng</li>
+                            <li>Nhổ lông tai, vệ sinh tai</li>
+                            <li>Cạo bàn, cắt móng, mài móng</li>
+                            <li>Cạo theo yêu cầu</li>
+                            <li>Vật tuyển hồi</li>
+                            <li>Tắm sạch sẽ & Massage</li>
+                            <li>Sấy khô, vệ sinh tai lại</li>
+                            <li>Xịt nước hoa, dưỡng lông</li>
+                        </ul>
+                        <a href="#booking" class="btn">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>COMBO CẮT TỈA</h3>
+                        <div class="price">CHỈ TỪ 350K</div>
+                    </div>
+                    <div class="service-body">
+                        <p>GÓI COMBO CẮT TỈA 10 BƯỚC</p>
+                        <ul>
+                            <li>Đón tiếp, xin thông tin và tư vấn</li>
+                            <li>Kiểm tra sức khỏe lâm sàng</li>
+                            <li>Nhổ lông tai, vệ sinh tai</li>
+                            <li>Cạo bàn, cắt móng, mài móng</li>
+                            <li>Chải & làm bồng lông</li>
+                            <li>Vật tuyển hồi</li>
+                            <li>Tắm sạch sẽ & Massage</li>
+                            <li>Sấy khô, vệ sinh tai lại, đánh bông</li>
+                            <li>Cắt tạo kiểu theo yêu cầu</li>
+                            <li>Xịt nước hoa, dưỡng lông</li>
+                        </ul>
+                        <a href="#booking" class="btn">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Đặt lịch dịch vụ</h2>
+                <p>Chọn ngày, giờ và dịch vụ phù hợp cho thú cưng của bạn</p>
+            </div>
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="service">Chọn dịch vụ</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">-- Chọn dịch vụ --</option>
+                                <option value="combo-cao-tron">COMBO CẠO TRỌN - Từ 150K</option>
+                                <option value="combo-cao-tia">COMBO CẠO TỈA - Từ 250K</option>
+                                <option value="combo-cat-tia">COMBO CẮT TỈA - Từ 350K</option>
+                                <option value="hotel">KHÁCH SẠN THÚ CƯNG - Từ 200K/ngày</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-type">Loại thú cưng</label>
+                            <select id="pet-type" class="form-control" required>
+                                <option value="">-- Chọn loại thú cưng --</option>
+                                <option value="dog">Chó</option>
+                                <option value="cat">Mèo</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-name">Tên thú cưng</label>
+                            <input type="text" id="pet-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="owner-name">Tên chủ nuôi</label>
+                            <input type="text" id="owner-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn ngày</label>
+                            <div class="calendar" id="calendar">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn giờ</label>
+                            <div class="time-slots" id="time-slots">
+                                <!-- Time slots will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Đặt lịch ngay</button>
+                    </form>
+                </div>
+                <div class="booking-image">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pet grooming">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gaugau Corner</h3>
+                    <p>Nơi thú cưng của bạn được yêu thương và chăm sóc như thành viên gia đình.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> (028) 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@gaugaucorner.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Giờ mở cửa</h3>
+                    <p>Thứ 2 - Thứ 6: 8:00 - 20:00</p>
+                    <p>Thứ 7 - Chủ nhật: 8:00 - 18:00</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="#home">Trang chủ</a>
+                    <a href="#mission">Mục tiêu & Sứ mệnh</a>
+                    <a href="#services">Dịch vụ</a>
+                    <a href="#booking">Đặt lịch</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Gaugau Corner. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar and Time Slots Generation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate calendar
+            const calendar = document.getElementById('calendar');
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            
+            // Create calendar header
+            const monthNames = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+                "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+            const header = document.createElement('div');
+            header.className = 'calendar-header';
+            header.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+            calendar.appendChild(header);
+            
+            // Create day names
+            const dayNames = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+            for (let i = 0; i < 7; i++) {
+                const dayName = document.createElement('div');
+                dayName.className = 'calendar-day';
+                dayName.textContent = dayNames[i];
+                dayName.style.fontWeight = 'bold';
+                calendar.appendChild(dayName);
+            }
+            
+            // Create empty cells for days before the first day of month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day disabled';
+                calendar.appendChild(emptyDay);
+            }
+            
+            // Create days of the month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.className = 'calendar-day';
+                day.textContent = i;
+                
+                // Disable past days
+                if (i < today.getDate() && currentMonth === today.getMonth()) {
+                    day.classList.add('disabled');
+                } else {
+                    day.addEventListener('click', function() {
+                        // Remove selected class from all days
+                        const allDays = document.querySelectorAll('.calendar-day');
+                        allDays.forEach(d => d.classList.remove('selected'));
+                        
+                        // Add selected class to clicked day
+                        this.classList.add('selected');
+                    });
+                }
+                
+                calendar.appendChild(day);
+            }
+            
+            // Generate time slots
+            const timeSlots = document.getElementById('time-slots');
+            const times = ['08:00', '09:30', '11:00', '13:30', '15:00', '16:30'];
+            
+            times.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                slot.addEventListener('click', function() {
+                    // Remove selected class from all time slots
+                    const allSlots = document.querySelectorAll('.time-slot');
+                    allSlots.forEach(s => s.classList.remove('selected'));
+                    
+                    // Add selected class to clicked time slot
+                    this.classList.add('selected');
+                });
+                timeSlots.appendChild(slot);
+            });
+            
+            // Form submission
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get selected values
+                const service = document.getElementById('service').value;
+                const petType = document.getElementById('pet-type').value;
+                const petName = document.getElementById('pet-name').value;
+                const ownerName = document.getElementById('owner-name').value;
+                const phone = document.getElementById('phone').value;
+                
+                // Check if date and time are selected
+                const selectedDate = document.querySelector('.calendar-day.selected');
+                const selectedTime = document.querySelector('.time-slot.selected');
+                
+                if (!selectedDate || !selectedTime) {
+                    alert('Vui lòng chọn ngày và giờ!');
+                    return;
+                }
+                
+                // In a real application, you would send this data to a server
+                alert(`Đặt lịch thành công!\n\nDịch vụ: ${document.getElementById('service').options[document.getElementById('service').selectedIndex].text}\nThú cưng: ${petName} (${document.getElementById('pet-type').options[document.getElementById('pet-type').selectedIndex].text})\nChủ nuôi: ${ownerName}\nSĐT: ${phone}\nNgày: ${selectedDate.textContent}/${currentMonth + 1}/${currentYear}\nGiờ: ${selectedTime.textContent}`);
+                
+                // Reset form
+                this.reset();
+                document.querySelectorAll('.calendar-day.selected, .time-slot.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
