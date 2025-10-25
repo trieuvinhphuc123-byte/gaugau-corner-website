@@ -19,6 +19,7 @@
             --primary: #FF6B6B;
             --secondary: #4ECDC4;
             --accent: #FFD166;
+            --hotel: #A78BFA;
             --dark: #1A535C;
             --light: #F7FFF7;
             --text: #333333;
@@ -209,10 +210,17 @@
         }
 
         .service-header {
-            background-color: var(--secondary);
             color: white;
             padding: 20px;
             text-align: center;
+        }
+
+        .service-header.spa {
+            background-color: var(--secondary);
+        }
+
+        .service-header.hotel {
+            background-color: var(--hotel);
         }
 
         .service-header h3 {
@@ -247,6 +255,10 @@
             position: absolute;
             left: 0;
             font-weight: bold;
+        }
+
+        .service-body.hotel li:before {
+            color: var(--hotel);
         }
 
         /* Booking Section */
@@ -523,8 +535,9 @@
                 <p>Chúng tôi cung cấp các gói dịch vụ chăm sóc toàn diện cho thú cưng của bạn</p>
             </div>
             <div class="services-grid">
+                <!-- Dịch vụ Spa & Grooming -->
                 <div class="service-card">
-                    <div class="service-header">
+                    <div class="service-header spa">
                         <h3>COMBO CẠO TRỌN</h3>
                         <div class="price">CHỈ TỪ 150K</div>
                     </div>
@@ -544,7 +557,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-header">
+                    <div class="service-header spa">
                         <h3>COMBO CẠO TỈA</h3>
                         <div class="price">CHỈ TỪ 250K</div>
                     </div>
@@ -565,7 +578,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-header">
+                    <div class="service-header spa">
                         <h3>COMBO CẮT TỈA</h3>
                         <div class="price">CHỈ TỪ 350K</div>
                     </div>
@@ -584,6 +597,28 @@
                             <li>Xịt nước hoa, dưỡng lông</li>
                         </ul>
                         <a href="#booking" class="btn">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+                
+                <!-- Dịch vụ Hotel - MỚI THÊM -->
+                <div class="service-card">
+                    <div class="service-header hotel">
+                        <h3>KHÁCH SẠN THÚ CƯNG</h3>
+                        <div class="price">CHỈ TỪ 200K/ngày</div>
+                    </div>
+                    <div class="service-body hotel">
+                        <p>GÓI LƯU TRÚ TIÊU CHUẨN 5*</p>
+                        <ul>
+                            <li>Đón tiếp, kiểm tra sức khỏe ban đầu</li>
+                            <li>Phòng riêng tiện nghi, sạch sẽ</li>
+                            <li>Thức ăn cao cấp theo chế độ</li>
+                            <li>Vui chơi, vận động 2 lần/ngày</li>
+                            <li>Tắm sạch sẽ trước khi trả</li>
+                            <li>Giám sát 24/7 bởi nhân viên</li>
+                            <li>Báo cáo tình hình hàng ngày</li>
+                            <li>Dịch vụ y tế khẩn cấp (nếu cần)</li>
+                        </ul>
+                        <a href="#booking" class="btn">Đặt phòng ngay</a>
                     </div>
                 </div>
             </div>
